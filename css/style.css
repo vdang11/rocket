@@ -1,25 +1,33 @@
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+}
+.stars,
+.stars2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.cosmic {
-  background-color: black;
-  background: url(space.svg);
-  background-size: 100%;
-  animation-name: star;
-  animation-duration: 50s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+.stars {
+  background: #000 url(../img/space.svg) repeat top center;
+}
+.stars2 {
+  background: transparent url(../img/space1.png) repeat top center;
+  animation: star2 20s linear infinite;
 }
 
-@keyframes star {
-  0% {
+@keyframes star2 {
+  from {
     background-position: 0 0;
   }
-  100% {
-    background-position: 0 1000px;
+  to {
+    background-position: 0 1500px;
   }
 }
 
@@ -28,7 +36,7 @@
   width: 250px;
   height: 250px;
   margin: 300px 50px 0;
-  background: url(earth.svg) no-repeat 0 0;
+  background: url(../img/earth.svg) no-repeat 0 0;
 }
 
 .fuel_launching1,
@@ -41,7 +49,7 @@
 }
 
 .rocket1 {
-  background: url(rocket-ship.svg) no-repeat 0 0;
+  background: url(../img/rocket-ship.svg) no-repeat 0 0;
   transform: rotate(30deg);
   z-index: 2;
   width: 80px;
@@ -50,35 +58,19 @@
   top: -95px;
   animation-name: fly;
   animation-delay: 2s;
-  animation-duration: 6.5s;
-  animation-timing-function: ease-in;
+  animation-duration: 3s;
+  animation-timing-function: ease-out;
   animation-fill-mode: forwards;
   text-align: center;
 }
 
 @keyframes fly {
-  5% {
-    left: 165px;
+  from {
+    left: 160px;
     transform: rotate(35deg);
-  }
-  25% {
-    left: 195px;
-    transform: rotate(35deg);
-  }
-  50% {
-    left: 225x;
-    transform: rotate(40deg);
-  }
-  75% {
-    left: 255px;
-    transform: rotate(50deg);
-  }
-  100% {
-    left: 285px;
-    transform: rotate(60deg);
   }
   to {
-    left: 305px;
+    left: 500px;
     top: -500px;
     transform: rotate(60deg);
   }
@@ -86,56 +78,66 @@
 
 .fuel_launching1 {
   opacity: 0;
-  bottom: -45px;
+  bottom: -55px;
   width: 80px;
   height: 140px;
-  background: url(bigfire.svg) no-repeat 0 0;
+  background: url(../img/bigfire.svg) no-repeat 0 0;
   animation-name: fire_launching1;
-  animation-delay: 0.5s;
-  animation-duration: 5s;
+  animation-delay: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
 }
 @keyframes fire_launching1 {
+  from {
+    opacity: 0;
+    height: 145px;
+    width: 82px;
+  }
   to {
     opacity: 1;
+    height: 140px;
+    width: 80px;
   }
 }
 
 .small_fire {
-  opacity: 0;
   text-align: center;
   position: fixed;
   z-index: 1000;
-  bottom: -55px;
+  bottom: -5px;
   width: 30px;
   height: 80px;
   left: 25px;
-  background: url(smallfire.svg) no-repeat 0 0;
+  background: url(../img/smallfire.svg) no-repeat 0 0;
   animation-name: small_fire;
-  animation-delay: 1s;
-  animation-duration: 0.1s;
-  animation-fill-mode: forwards;
+  animation-delay: 1.4s;
+  animation-duration: 0.3s;
+  animation-fill-mode: backwards;
   animation-iteration-count: infinite;
 }
 @keyframes small_fire {
   from {
+    opacity: 0;
     height: 80px;
+    width: 30px;
   }
   to {
-    height: 120px;
     opacity: 1;
+    height: 82px;
+    width: 32px;
   }
 }
 
 .rocket2 {
-  background: url(rocket-ship.svg) no-repeat 0 0;
+  background: url(../img/rocket-ship.svg) no-repeat 0 0;
   transform: rotate(180deg);
   top: -200px;
   width: 80px;
   height: 200px;
   animation-name: flyback;
-  animation-delay: 8.5s;
-  animation-duration: 5s;
+  animation-delay: 5s;
+  animation-duration: 4s;
   animation-timing-function: ease-in;
   animation-fill-mode: backwards;
 }
@@ -143,44 +145,16 @@
 @keyframes flyback {
   0% {
     transform: rotate(180deg);
-    left: 600px;
-  }
-  40% {
-    transform: rotate(180deg);
-    left: 620px;
-  }
-  45% {
-    transform: rotate(180deg);
-    left: 600px;
-  }
-  50% {
-    transform: rotate(180deg);
-    left: 620px;
-  }
-  55% {
-    transform: rotate(180deg);
-    left: 600px;
-  }
-  60% {
-    transform: rotate(180deg);
-    left: 620px;
-  }
-  70% {
-    transform: rotate(180deg);
-    left: 640px;
-  }
-  75% {
-    transform: rotate(180deg);
-    left: 660px;
-  }
-  85% {
-    transform: rotate(180deg);
-    left: 680px;
-  }
-  95% {
-    transform: rotate(180deg);
     left: 700px;
   }
+  50% {
+    left: 700x;
+  }
+
+  75% {
+    left: 700px;
+  }
+
   100% {
     left: 700px;
     top: 300px;
@@ -189,16 +163,15 @@
 
 .rocket3 {
   opacity: 0;
-  background: url(rocket-ship.svg) no-repeat 0 0;
+  background: url(../img/rocket-ship.svg) no-repeat 0 0;
   transform: rotate(180deg);
-  z-index: 1000;
   left: 700px;
   top: 300px;
   width: 80px;
   height: 200px;
   animation-name: arriving;
-  animation-delay: 13.5s;
-  animation-duration: 6.5s;
+  animation-delay: 9s;
+  animation-duration: 5.5s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
@@ -231,14 +204,22 @@
   width: 80px;
   height: 140px;
   bottom: -55px;
-  background: url(bigfire.svg) no-repeat 0 0;
+  background: url(../img/bigfire.svg) no-repeat 0 0;
   animation-name: fire_landing1;
-  animation-duration: 5s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
 }
 @keyframes fire_landing1 {
-  to {
+  from {
     opacity: 1;
+    height: 145px;
+    width: 82px;
+  }
+  to {
+    opacity: 0;
+    height: 140px;
+    width: 80px;
   }
 }
 
@@ -247,15 +228,22 @@
   width: 80px;
   height: 140px;
   bottom: -55px;
-  background: url(bigfire.svg) no-repeat 0 0;
+  background: url(../img/bigfire.svg) no-repeat 0 0;
   animation-name: fire_landing2;
-  animation-delay: 20s;
-  animation-duration: 5s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
 }
 @keyframes fire_landing2 {
+  from {
+    opacity: 1;
+    height: 145px;
+    width: 82px;
+  }
   to {
     opacity: 0;
+    height: 140px;
+    width: 80px;
   }
 }
 
@@ -263,12 +251,12 @@
   margin-left: 770px;
   margin-top: -235px;
   opacity: 0;
-  background: url(flag.svg) no-repeat 0 0;
+  background: url(../img/flag.svg) no-repeat 0 0;
   height: 150px;
   width: 70px;
   animation-name: placing_flag;
-  animation-delay: 22s;
-  animation-duration: 5s;
+  animation-delay: 15s;
+  animation-duration: 3s;
   animation-fill-mode: forwards;
 }
 @keyframes placing_flag {
@@ -282,5 +270,6 @@
   height: 170px;
   margin-left: 745px;
   margin-top: 30px;
-  background: url(moon.svg) no-repeat 0 0;
+  background: url(../img/moon.svg) no-repeat 0 0;
+  position: relative;
 }
